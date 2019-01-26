@@ -1,3 +1,6 @@
+const pwd = require('./pwd');
+const ls = require('./ls');
+
 process.stdout.write('prompt>')
 process.stdin.on('data', data => {
   const cmd = data.toString().trim()
@@ -10,9 +13,9 @@ process.stdin.on('data', data => {
   if (cmd === 'goodbye') {
     process.stdout.write('have a good evening')
   }
-  process.stdout.write('\nprompt>')
+  if (cmd === 'ls') {
+    ls();
+  }
 })
 
-function pwd() {
-  process.stdout.write(process.cwd())
-}
+
